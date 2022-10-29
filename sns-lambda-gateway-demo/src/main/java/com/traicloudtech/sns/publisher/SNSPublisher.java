@@ -27,9 +27,7 @@ public class SNSPublisher implements RequestHandler<APIGatewayProxyRequestEvent,
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("X-Custom-Header", "application/json");
-
         final String topicARN = System.getenv("TOPIC_ARN");
-
         String requestBody = input.getBody();
         LambdaLogger logger = context.getLogger();
         logger.log("Original json body: " + requestBody);
