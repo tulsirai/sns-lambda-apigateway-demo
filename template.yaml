@@ -1,9 +1,8 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  sns-publisher-rnd
-
-  Sample SAM Template for sns-publisher-rnd
+  sns-lambda-apigateway-demo
+  Sample SAM Template for sns-lambda-apigateway-demo
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -31,7 +30,6 @@ Resources:
       Events:
         SNSPublisherAPI:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-#          Name: SNSPublisherAPI
           Properties:           
             Path: /publish
             Method: post
@@ -51,7 +49,7 @@ Resources:
     Type: AWS::SNS::Topic
     Properties:
       TopicName: trai-demo-topic
-      DisplayName: A topic for RnD
+      DisplayName: This is a topic created for RnD with sns, lambda and api gateway integration.
       Subscription:
         - Protocol: lambda
           Endpoint: !GetAtt SNSProcessorFunction.Arn
